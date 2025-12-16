@@ -15,4 +15,7 @@ set numberwidth=1
 set hlsearch
 set ruler
 highlight Comment ctermfg=green
-set nowrap
+set wrap
+set linebreak
+set title
+set titlestring=%t%m

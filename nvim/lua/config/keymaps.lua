@@ -28,12 +28,6 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "<leader>e", function()
-  require("telescope").extensions.file_browser.file_browser({
-    path = "%:p:h", -- открывать в папке текущего буфера
-    select_buffer = true,
-  })
-end, { desc = "File Browser" })
 keymap.set(
   "n",
   "<leader>r",

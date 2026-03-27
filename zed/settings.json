@@ -1,0 +1,100 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    "disable_ai": true,
+    "indent_guides": {
+        "enabled": false
+    },
+    "toolbar": {
+        "quick_actions": true
+    },
+    "inline_code_actions": true,
+    "gutter": {
+        "runnables": true
+    },
+    "title_bar": {
+        "show_branch_name": true,
+        "show_sign_in": true
+    },
+    "tab_bar": {
+        "show_tab_bar_buttons": false,
+        "show_nav_history_buttons": false
+    },
+    "diagnostics": {
+        "button": true
+    },
+    "search": {
+        "button": false
+    },
+    "status_bar": {
+        "active_language_button": true
+    },
+    "agent": {
+        "button": false,
+        "model_parameters": []
+    },
+    "debugger": {
+        "button": false,
+        "dock": "bottom"
+    },
+    "outline_panel": {
+        "button": false
+    },
+    "collaboration_panel": {
+        "button": false
+    },
+    "buffer_font_features": {
+        "calt": false,
+    },
+    "relative_line_numbers": "enabled",
+    "project_panel": {
+        "button": true,
+        "scrollbar": {
+            "show": "never",
+        },
+        "indent_guides": {
+            "show": "never",
+        },
+    },
+    "terminal": {
+        "font_family": "GeistMono Nerd Font",
+        "dock": "bottom",
+        "shell": "system",
+    },
+    "git": {
+        "blame": {
+            "show_avatar": false,
+        },
+    },
+    "vim_mode": true,
+    "cursor_shape": "block",
+    "buffer_font_family": ".ZedMono",
+    "icon_theme": "Zed (Default)",
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+    "vim": {
+        "use_system_clipboard": "always",
+    },
+    "soft_wrap": "editor_width",
+    "preferred_line_length": 80,
+    "tab_size": 4,
+    "hard_tabs": false,
+    "format_on_save": "on",
+    "enable_language_server": true,
+    "show_whitespaces": "selection",
+    "ui_font_size": 16,
+    "buffer_font_size": 15,
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "One Dark",
+    },
+}

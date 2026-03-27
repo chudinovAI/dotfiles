@@ -1,0 +1,23 @@
+[
+    {
+        "context": "Workspace",
+        "bindings": {},
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {},
+    },
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "shift-h": "vim::StartOfLine",
+            "shift-l": "vim::EndOfLine",
+
+            "s s": "pane::SplitDown",
+            "s v": "pane::SplitRight",
+            "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+            "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+            "space e": "project_panel::ToggleFocus",
+        },
+    },
+]

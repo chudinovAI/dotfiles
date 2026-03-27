@@ -1,0 +1,47 @@
+font-family = Geist Mono
+font-size = 16
+
+background-opacity = 0.9
+
+font-feature=-liga
+
+macos-option-as-alt=true
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+
+cursor-style = block
+
+shell-integration-features = ssh-terminfo,ssh-env,no-cursor
+
+command = /opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux
+
+theme = Dracula
+background = 0a0a0a
+foreground = f8f8f2
+cursor-color = 50fa7b
+
+macos-titlebar-style = hidden
+window-padding-x = 12
+window-padding-y = 12
+
+palette = 0=0a0a0a
+palette = 1=ff5555
+palette = 2=50fa7b
+palette = 3=f1fa8c
+palette = 4=bd93f9
+palette = 5=ff79c6
+palette = 6=8be9fd
+palette = 7=f8f8f2
+palette = 8=6272a4
+palette = 9=ff6e6e
+palette = 10=69ff94
+palette = 11=ffffa5
+palette = 12=d6acff
+palette = 13=ff92df
+palette = 14=a4ffff
+palette = 15=ffffff
+
+copy-on-select = true
+mouse-hide-while-typing = true
+resize-overlay = never
+window-save-state = always

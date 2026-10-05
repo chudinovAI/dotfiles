@@ -1,7 +1,9 @@
 [
     {
         "context": "Workspace",
-        "bindings": {},
+        "bindings": {
+            "ctrl-s": "pane::RevealInProjectPanel",
+        },
     },
     {
         "context": "Editor && vim_mode == insert",

@@ -1,5 +1,6 @@
 set -U fish_greeting ""
 source ~/.config/fish/aliases.fish
-source ~/.config/fish/init.fish
-source ~/.config/fish/envs.fish
-set -g fish_key_bindings fish_vi_key_bindings
+starship init fish | source
+
+# Hermes Agent command
+fish_add_path "$HOME/.local/bin"

@@ -1,1 +1,8 @@
 .DS_Store
+# never commit secrets / machine-local state
+hosts.yml
+*.key
+*.pem
+.env
+.env.*
+node_modules/

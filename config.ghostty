@@ -13,7 +13,7 @@ cursor-style = block
 
 shell-integration-features = ssh-terminfo,ssh-env,no-cursor
 
-command = /opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux
+# command = /opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux
 
 theme = Dracula
 background = 0a0a0a

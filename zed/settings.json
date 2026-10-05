@@ -7,53 +7,61 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "cli_default_open_behavior": "new_window",
+    "git_panel": {
+        "dock": "left",
+    },
     "disable_ai": true,
     "indent_guides": {
-        "enabled": false
+        "enabled": false,
     },
     "toolbar": {
-        "quick_actions": true
+        "quick_actions": true,
     },
     "inline_code_actions": true,
     "gutter": {
-        "runnables": true
+        "runnables": true,
     },
     "title_bar": {
         "show_branch_name": true,
-        "show_sign_in": true
+        "show_sign_in": true,
     },
     "tab_bar": {
         "show_tab_bar_buttons": false,
-        "show_nav_history_buttons": false
+        "show_nav_history_buttons": false,
     },
     "diagnostics": {
-        "button": true
+        "button": true,
     },
     "search": {
-        "button": false
+        "button": false,
     },
     "status_bar": {
-        "active_language_button": true
+        "active_language_button": true,
     },
     "agent": {
+        "dock": "right",
         "button": false,
-        "model_parameters": []
+        "model_parameters": [],
     },
     "debugger": {
         "button": false,
-        "dock": "bottom"
+        "dock": "bottom",
     },
     "outline_panel": {
-        "button": false
+        "dock": "left",
+        "button": false,
     },
     "collaboration_panel": {
-        "button": false
+        "dock": "left",
+        "button": false,
     },
     "buffer_font_features": {
         "calt": false,
     },
     "relative_line_numbers": "enabled",
     "project_panel": {
+        "dock": "left",
         "button": true,
         "scrollbar": {
             "show": "never",
@@ -72,7 +80,7 @@
             "show_avatar": false,
         },
     },
-    "vim_mode": true,
+    "vim_mode": false,
     "cursor_shape": "block",
     "buffer_font_family": ".ZedMono",
     "icon_theme": "Zed (Default)",

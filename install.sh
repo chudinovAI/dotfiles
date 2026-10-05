@@ -93,6 +93,7 @@ EOF
     command -v "$cmd" >/dev/null || command -v "${cmd}cat" >/dev/null \
       || echo "missing $cmd — install it as an admin: sudo apt install fish eza bat fzf tmux (starship: starship.rs)"
   done
+  [ -d "$BACKUP" ] && echo "backups in $BACKUP"
   exit 0
 fi
 

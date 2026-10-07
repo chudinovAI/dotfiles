@@ -191,7 +191,7 @@ symbol = " "
 symbol = " "
 
 [character]
-success_symbol = "[I](bold brblack) [❯](bold green)"
-error_symbol = "[I](bold brblack) [❯](bold red)"
-vicmd_symbol = "[N](bold green) [❯](bold green)"
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold green)"
 

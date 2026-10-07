@@ -119,5 +119,20 @@ if [ "$BREW" = 1 ]; then
   fi
 fi
 
+# --- fish as login shell (macOS) ---------------------------------------------
+FISH="$(command -v fish || true)"
+if [ "$(uname)" = Darwin ] && [ -n "$FISH" ]; then
+  if ! grep -qx "$FISH" /etc/shells; then
+    echo "add     $FISH to /etc/shells (sudo)"
+    run sudo sh -c "echo '$FISH' >> /etc/shells"
+  fi
+  if [ "$(dscl . -read "$HOME" UserShell | awk '{print $2}')" != "$FISH" ]; then
+    echo "chsh    $FISH"
+    run chsh -s "$FISH"
+  else
+    echo "ok      login shell $FISH"
+  fi
+fi
+
 [ -d "$BACKUP" ] && echo "backups in $BACKUP"
 echo "done"

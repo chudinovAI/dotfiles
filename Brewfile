@@ -1,11 +1,7 @@
 tap "can1357/tap"
 tap "manaflow-ai/cmux"
-tap "domt4/autoupdate"
-tap "theboredteam/boring-notch", "https://github.com/TheBoredTeam/homebrew-boring-notch"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Resource monitor. C++ version and continuation of bashtop and bpytop
-brew "btop"
 # Cross-platform make
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
@@ -42,6 +38,8 @@ brew "ollama"
 brew "poppler"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Minimal, fast, customizable prompt for any shell
+brew "starship"
 # Change macOS audio source from the command-line
 brew "switchaudio-osx"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -52,20 +50,30 @@ brew "tmux"
 brew "uv"
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
-# Telegram client with ghost mode and message history
-cask "ayugram"
+# Display management (HiDPI, resolution, brightness)
+cask "betterdisplay"
+# Offline API client (Postman alternative)
+cask "bruno"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-cask "cmux"
-# Utility for customizing which browser to start
-cask "finicky"
+cask "cmux", trusted: true
+# OpenAI's coding agent CLI
+cask "codex"
+# Universal database client
+cask "dbeaver-community"
 cask "font-geist-mono-nerd-font"
-# Smooths scrolling and set mouse scroll directions independently
-cask "mos@beta"
-# Open-source software for live streaming and screen recording
-cask "obs"
-# AI coding agent desktop client
-cask "opencode-desktop"
+# Window snapping with keyboard shortcuts
+cask "rectangle"
+# Telegram messenger
+cask "telegram"
+# Virtual machines (QEMU/Apple Virtualization)
+cask "utm"
+# Yandex Music client
+cask "yandex-music"
 # Multiplayer code editor
 cask "zed"
+# Firefox-based browser
+cask "zen"
 npm "@anthropic-ai/claude-code"

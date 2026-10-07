@@ -76,4 +76,3 @@ cask "yandex-music"
 cask "zed"
 # Firefox-based browser
 cask "zen"
-npm "@anthropic-ai/claude-code"

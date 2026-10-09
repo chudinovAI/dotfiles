@@ -7,3 +7,5 @@ starship init fish | source
 
 # Hermes Agent command
 fish_add_path "$HOME/.local/bin"
+set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx HOMEBREW_NO_INSECURE_REDIRECT 1

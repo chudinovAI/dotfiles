@@ -6,3 +6,6 @@ hosts.yml
 .env
 .env.*
 node_modules/
+
+# Personal cheatsheet, local only
+CHEATSHEET.md

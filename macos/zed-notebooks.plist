@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Zed hides its Jupyter notebook UI (.ipynb as cells, like Colab) behind a
+  staff-only feature flag; the LOCAL_NOTEBOOK_DEV env var unlocks it for anyone.
+  GUI apps don't read shell rc files, so set it for the whole login session.
+  Remove: launchctl unsetenv LOCAL_NOTEBOOK_DEV && rm ~/Library/LaunchAgents/local.zed-notebooks.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>local.zed-notebooks</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/launchctl</string>
+        <string>setenv</string>
+        <string>LOCAL_NOTEBOOK_DEV</string>
+        <string>1</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>

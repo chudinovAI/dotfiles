@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+
+  // Only overrides live here; everything else falls back to Settings (cmd-,).
+  // All keys with defaults: `cmux docs settings`. Saved edits apply on their own;
+  // terminal look (font, colors) comes from ../config.ghostty.
+  // Idea: minimal chrome, but the sidebar tells what every agent is doing.
+
+  "app": {
+    // No workspace title bar, its controls move into the sidebar
+    "minimalMode": true,
+    "hideTabCloseButton": true,
+    "equalizeSplitsOnCreate": true,
+    "focusPaneOnFirstClick": true,
+    // Cmd-click on a path in the terminal opens it in Zed;
+    // Markdown still opens in cmux's rendered viewer
+    "preferredEditor": "zed",
+    "openSupportedFilesInCmux": false,
+    "openMarkdownInCmuxViewer": true,
+    "sendAnonymousTelemetry": false
+  },
+
+  "fileExplorer": {
+    "doubleClickAction": "preferredEditor"
+  },
+
+  // ---- Sidebar: one glance = state of every agent --------------------------
+  "sidebar": {
+    // Model, context window used and estimated cost next to Claude/Codex status
+    "showAgentUsage": true,
+    // Branch and folder on one line, folder as …/last/segments
+    "branchLayout": "inline",
+    "pathLastSegmentOnly": true,
+    // Agent's last message: a preview, not a wall of text
+    "notificationMessageLineLimit": 3,
+    "showLog": false
+  },
+
+  // ---- Dracula accents (same palette as config.ghostty) --------------------
+  "paneBorderColor": "#21222c",
+  "activePaneBorderColor": "#bd93f9",
+  "notifications": {
+    // Ring around a pane whose agent is waiting for you
+    "paneFlashColor": "#ff79c6"
+  },
+  "workspaceColors": {
+    "subtleSelection": true,
+    "colors": {
+      "Purple": "#bd93f9",
+      "Pink": "#ff79c6",
+      "Green": "#50fa7b",
+      "Cyan": "#8be9fd",
+      "Orange": "#ffb86c",
+      "Red": "#ff5555",
+      "Yellow": "#f1fa8c",
+      "Comment": "#6272a4"
+    }
+  },
+
+  // ---- Own actions: hotkeys + Command Palette (cmd-shift-p) -----------------
+  "actions": {
+    // Whole sidebar down to one line per workspace (status icon + title);
+    // details move into the tooltip. Press again to bring them back.
+    "toggle-compact-sidebar": {
+      "type": "setting",
+      "path": "sidebar.compactAgentStatus",
+      "toggle": true,
+      "title": "Toggle Compact Sidebar",
+      "palette": true,
+      "shortcut": "cmd+shift+b"
+    },
+    // New workspace: Claude on the left, plain shell on the right
+    "claude-workspace": {
+      "type": "workspace",
+      "title": "Claude + Shell",
+      "palette": true,
+      "shortcut": "cmd+shift+ctrl+n",
+      "workspace": {
+        "name": "Claude",
+        "color": "Purple",
+        "layout": {
+          "direction": "horizontal",
+          "split": 0.6,
+          "children": [
+            { "pane": { "surfaces": [{ "type": "terminal", "name": "Claude", "command": "claude" }] } },
+            { "pane": { "surfaces": [{ "type": "terminal", "name": "Shell" }] } }
+          ]
+        }
+      }
+    }
+  }
+}

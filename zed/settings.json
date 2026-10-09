@@ -1,68 +1,129 @@
 // Zed settings
 //
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
+// Philosophy: minimal chrome, everything via keyboard (see ~/dotfiles/CHEATSHEET.md),
+// AI off. Vim mode on, but all usual cmd-shortcuts keep working;
+// cmd-k v toggles vim off/on when it gets in the way.
 //
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// Defaults: `zed: open default settings` in the command palette (cmd-shift-p).
 {
     "cli_default_open_behavior": "new_window",
-    "git_panel": {
-        "dock": "left",
-    },
     "disable_ai": true,
-    "indent_guides": {
-        "enabled": false,
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
     },
-    "toolbar": {
-        "quick_actions": true,
+    // Column colors for .csv / .tsv (table preview itself is built in: cmd-shift-v)
+    "auto_install_extensions": {
+        "rainbow-csv": true,
     },
+    // Notebooks/REPL: the uv data env from `install.sh --jupyter` (Homebrew's
+    // python can't get ipykernel). For a project's .venv pick it in the kernel menu.
+    "jupyter": {
+        "kernel_selections": {
+            "python": "python3",
+        },
+    },
+
+    // ---- Look (theme kept as is) ---------------------------------------
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "One Dark",
+    },
+    "icon_theme": "Zed (Default)",
+    "buffer_font_family": ".ZedMono",
+    "buffer_font_size": 15,
+    "buffer_font_features": {
+        "calt": false,
+    },
+    "ui_font_size": 16,
+    "cursor_shape": "block",
+    "cursor_blink": false,
+    // Slightly dim inactive splits so it's obvious where focus is
+    "active_pane_modifiers": {
+        "inactive_opacity": 0.85,
+    },
+
+    // ---- Vim -----------------------------------------------------------
+    "vim_mode": true,
+    "vim": {
+        "use_system_clipboard": "always",
+        "use_smartcase_find": true,
+        // Relative numbers in normal mode (for 5j / 3k), absolute in insert
+        "toggle_relative_line_numbers": true,
+        "cursor_shape": {
+            "insert": "bar",
+        },
+    },
+    // Popup with available continuations after pressing space / g / ] ...
+    "which_key": {
+        "enabled": true,
+        "delay_ms": 400,
+    },
+    "relative_line_numbers": "enabled",
+    "vertical_scroll_margin": 8,
+    "use_smartcase_search": true,
+
+    // ---- Editing -------------------------------------------------------
+    "soft_wrap": "editor_width",
+    "preferred_line_length": 80,
+    "tab_size": 4,
+    "hard_tabs": false,
+    "format_on_save": "on",
+    // Agents in cmux see your edits as soon as you switch away from Zed
+    "autosave": "on_focus_change",
+    "enable_language_server": true,
+    "show_whitespaces": "selection",
     "inline_code_actions": true,
-    "gutter": {
-        "runnables": true,
-    },
+
+    // ---- Minimal chrome ------------------------------------------------
     "title_bar": {
         "show_branch_name": true,
-        "show_sign_in": true,
+        "show_project_items": true,
+        "show_sign_in": false,
+        "show_user_picture": false,
+        "show_onboarding_banner": false,
+    },
+    "toolbar": {
+        "breadcrumbs": true,
+        "quick_actions": false,
+        "selections_menu": false,
+        "agent_review": false,
     },
     "tab_bar": {
         "show_tab_bar_buttons": false,
         "show_nav_history_buttons": false,
     },
-    "diagnostics": {
-        "button": true,
+    "tabs": {
+        "file_icons": true,
+        "git_status": true,
+        "show_diagnostics": "errors",
     },
-    "search": {
-        "button": false,
+    "gutter": {
+        "runnables": true,
+        "folds": false,
+        "breakpoints": false,
+    },
+    "indent_guides": {
+        "enabled": false,
     },
     "status_bar": {
         "active_language_button": true,
     },
-    "agent": {
-        "dock": "right",
-        "button": false,
-        "model_parameters": [],
+    "git": {
+        "inline_blame": {
+            // Toggle with space g b
+            "enabled": false,
+        },
+        "blame": {
+            "show_avatar": false,
+        },
     },
-    "debugger": {
-        "button": false,
-        "dock": "bottom",
-    },
-    "outline_panel": {
-        "dock": "left",
-        "button": false,
-    },
-    "collaboration_panel": {
-        "dock": "left",
-        "button": false,
-    },
-    "buffer_font_features": {
-        "calt": false,
-    },
-    "relative_line_numbers": "enabled",
+
+    // Panels: no status-bar buttons, opened by hotkeys only
     "project_panel": {
         "dock": "left",
-        "button": true,
+        "button": false,
         "scrollbar": {
             "show": "never",
         },
@@ -70,39 +131,45 @@
             "show": "never",
         },
     },
+    "git_panel": {
+        "dock": "left",
+        "button": false,
+    },
+    "outline_panel": {
+        "dock": "right",
+        "button": false,
+    },
+    "collaboration_panel": {
+        "dock": "left",
+        "button": false,
+    },
+    "agent": {
+        "dock": "right",
+        "button": false,
+        "model_parameters": [],
+    },
+    "debugger": {
+        "dock": "bottom",
+        "button": false,
+    },
+    "search": {
+        "button": false,
+    },
+    "diagnostics": {
+        "button": true,
+    },
+
+    // ---- Built-in terminal: behaves like cmux/Ghostty --------------------
     "terminal": {
         "font_family": "GeistMono Nerd Font",
         "dock": "bottom",
         "shell": "system",
-    },
-    "git": {
-        "blame": {
-            "show_avatar": false,
+        "button": false,
+        "copy_on_select": true,
+        "option_as_meta": true,
+        "blinking": "off",
+        "toolbar": {
+            "breadcrumbs": false,
         },
-    },
-    "vim_mode": false,
-    "cursor_shape": "block",
-    "buffer_font_family": ".ZedMono",
-    "icon_theme": "Zed (Default)",
-    "telemetry": {
-        "diagnostics": false,
-        "metrics": false,
-    },
-    "vim": {
-        "use_system_clipboard": "always",
-    },
-    "soft_wrap": "editor_width",
-    "preferred_line_length": 80,
-    "tab_size": 4,
-    "hard_tabs": false,
-    "format_on_save": "on",
-    "enable_language_server": true,
-    "show_whitespaces": "selection",
-    "ui_font_size": 16,
-    "buffer_font_size": 15,
-    "theme": {
-        "mode": "system",
-        "light": "One Light",
-        "dark": "One Dark",
     },
 }

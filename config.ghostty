@@ -44,4 +44,6 @@ palette = 15=ffffff
 copy-on-select = true
 mouse-hide-while-typing = true
 resize-overlay = never
+# Dim splits without focus (Zed does the same via active_pane_modifiers)
+unfocused-split-opacity = 0.85
 window-save-state = always

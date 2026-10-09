@@ -5,19 +5,21 @@
 #   ./install.sh            # this machine (macOS or Linux desktop)
 #   ./install.sh --brew     # + install everything from Brewfile (macOS)
 #   ./install.sh --server   # headless VPS: fish, starship, tmux, bash -> fish
+#   ./install.sh --jupyter  # + Python kernel with pandas for Zed notebooks/REPL
 #   ./install.sh --dry-run  # show what would happen, change nothing
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
-SERVER=0 BREW=0 DRY=0
+SERVER=0 BREW=0 DRY=0 JUPYTER=0
 
 for arg in "$@"; do
   case "$arg" in
     --server)  SERVER=1 ;;
     --brew)    BREW=1 ;;
+    --jupyter) JUPYTER=1 ;;
     --dry-run) DRY=1 ;;
-    -h|--help) sed -n '2,9p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,10p' "$0"; exit 0 ;;
     *) echo "unknown option: $arg" >&2; exit 1 ;;
   esac
 done
@@ -103,11 +105,16 @@ else
   GHOSTTY="$HOME/.config/ghostty/config"
 fi
 link config.ghostty   "$GHOSTTY"              # cmux reads this one too
+link cmux.json        "$HOME/.config/cmux/cmux.json"
 link gitconfig        "$HOME/.gitconfig"
 link .vimrc           "$HOME/.vimrc"
 link nvim             "$HOME/.config/nvim"
 link zed/keymap.json  "$HOME/.config/zed/keymap.json"
 copy_once zed/settings.json "$HOME/.config/zed/settings.json"
+if [ "$(uname)" = Darwin ]; then
+  # Unlocks Zed's notebook UI for GUI launches (see the plist); takes effect at next login
+  copy_once macos/zed-notebooks.plist "$HOME/Library/LaunchAgents/local.zed-notebooks.plist"
+fi
 
 if [ "$BREW" = 1 ]; then
   if command -v brew >/dev/null; then
@@ -115,6 +122,23 @@ if [ "$BREW" = 1 ]; then
     run brew bundle --file "$DOTFILES/Brewfile"
   else
     echo "brew not found: install Homebrew first (https://brew.sh)" >&2
+    exit 1
+  fi
+fi
+
+# --- Jupyter kernel for Zed (.ipynb, REPL in .py) ----------------------------
+# One uv env with the usual data stack, registered as the user's "python3"
+# kernel: Zed falls back to it outside projects (a project's own .venv still
+# wins) and JupyterLab gets pandas too.
+if [ "$JUPYTER" = 1 ]; then
+  PYDATA="$HOME/.local/share/py-data"
+  if command -v uv >/dev/null; then
+    echo "jupyter $PYDATA (ipykernel pandas numpy matplotlib)"
+    [ -d "$PYDATA" ] || run uv venv --quiet "$PYDATA"
+    run uv pip install --quiet --python "$PYDATA" ipykernel pandas numpy matplotlib
+    run "$PYDATA/bin/python" -m ipykernel install --user --name python3 --display-name "Python 3 (data)"
+  else
+    echo "uv not found: run ./install.sh --brew first" >&2
     exit 1
   fi
 fi

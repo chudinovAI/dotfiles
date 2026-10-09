@@ -1,14 +1,25 @@
+// Zed keymap. Full cheatsheet: ~/dotfiles/CHEATSHEET.md (fish: `cheat`).
+// Default bindings: `zed: open default keymap`; live editor: cmd-k cmd-s.
 [
+    // ---- Always on (vim or not) -------------------------------------------
     {
         "context": "Workspace",
         "bindings": {
             "ctrl-s": "pane::RevealInProjectPanel",
+            "cmd-k cmd-v": "workspace::ToggleVimMode",
+            "cmd-k cmd-z": "workspace::ToggleCenteredLayout",
         },
     },
+
+    // ---- Vim: insert --------------------------------------------------------
     {
         "context": "Editor && vim_mode == insert",
-        "bindings": {},
+        "bindings": {
+            "j k": "vim::NormalBefore",
+        },
     },
+
+    // ---- Vim: normal --------------------------------------------------------
     {
         "context": "Editor && vim_mode == normal",
         "bindings": {
@@ -19,7 +30,64 @@
             "s v": "pane::SplitRight",
             "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
             "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+        },
+    },
+
+    // ---- Leader (space) — press space and wait: which-key shows the menu ----
+    {
+        "context": "Editor && mode == full && (vim_mode == normal || vim_mode == visual) && !menu",
+        "bindings": {
+            // find
+            "space space": "file_finder::Toggle",
+            "space f": "file_finder::Toggle",
+            "space /": "pane::DeploySearch",
+            "space b": "tab_switcher::Toggle",
+            "space s": "outline::Toggle",
+            "space shift-s": "project_symbols::Toggle",
+            "space p": "projects::OpenRecent",
+
+            // panels
             "space e": "project_panel::ToggleFocus",
+            "space o": "outline_panel::ToggleFocus",
+            "space t": "terminal_panel::ToggleFocus",
+            "space d": "diagnostics::Deploy",
+            "space x": "workspace::CloseAllDocks",
+            "space z": "workspace::ToggleCenteredLayout",
+            "space m": "workspace::ToggleZoom",
+
+            // code
+            "space r": "editor::Rename",
+            "space a": "editor::ToggleCodeActions",
+
+            // git
+            "space g g": "git_panel::ToggleFocus",
+            "space g d": "git::Diff",
+            "space g b": "editor::ToggleGitBlameInline",
+            "space g h": "editor::ToggleSelectedDiffHunks",
+            "space g s": "git::ToggleStaged",
+            "space g c": "git::Branch",
+
+            // jupyter REPL in .py (cells split by `# %%`)
+            "space j j": "repl::Run",
+            "space j c": "repl::ClearOutputs",
+            "space j r": "repl::Restart",
+            "space j i": "repl::Interrupt",
+            "space j k": "repl::Sessions",
+
+            // buffers
+            "space w": "workspace::Save",
+            "space q": "pane::CloseActiveItem",
+        },
+    },
+
+    // ---- ctrl-h/j/k/l: move between splits AND side panels -----------------
+    {
+        "context": "(VimControl && !menu) || (ProjectPanel && not_editing) || (OutlinePanel && not_editing) || (GitPanel && ChangesList)",
+        "bindings": {
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-l": "workspace::ActivatePaneRight",
         },
     },
 ]
